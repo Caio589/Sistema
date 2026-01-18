@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>C.O SISTEMAS — Desenvolvimento Profissional</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: #000;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        overflow-x: hidden;
+    }
+
+    /* Fundo com efeito de código rolando */
+    .codigo-fundo {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        font-size: 14px;
+        color: rgb(0, 255, 0);
+        opacity: 0.25;
+        pointer-events: none;
+        white-space: pre-line;
+        animation: scroll 8s linear infinite;
+    }
+
+    @keyframes scroll {
+        0% { transform: translateY(-100%); }
+        100% { transform: translateY(100%); }
+    }
+
+    /* Container principal */
+    .conteudo {
+        position: relative;
+        z-index: 10;
+        padding: 40px;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 40px;
+        margin-bottom: 10px;
+        color: #00ff88;
+    }
+
+    p {
+        font-size: 18px;
+        margin-bottom: 30px;
+    }
+
+    /* Botão WhatsApp */
+    .whatsapp-btn {
+        display: block;
+        background: #25D366;
+        color: #fff;
+        padding: 16px;
+        margin: auto;
+        width: 260px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: bold;
+        box-shadow: 0 0 10px #25D366;
+    }
+
+    /* Chatbot */
+    .chatbox {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #111;
+        border: 2px solid #00ff88;
+        width: 300px;
+        height: 380px;
+        border-radius: 10px;
+        box-shadow: 0 0 12px #00ff88;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .chat-header {
+        background: #00ff88;
+        color: #000;
+        padding: 10px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .chat-mensagens {
+        flex: 1;
+        padding: 10px;
+        overflow-y: auto;
+        font-size: 14px;
+    }
+
+    .chat-input {
+        display: flex;
+        border-top: 2px solid #00ff88;
+    }
+
+    .chat-input input {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        outline: none;
+        background: #222;
+        color: #fff;
+    }
+
+    .chat-input button {
+        width: 80px;
+        background: #00ff88;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+    }
+</style>
+</head>
+
+<body>
+
+<!-- FUNDO DE CÓDIGO ANIMADO -->
+<div class="codigo-fundo">
+function criarSistema(){  
+   return "C.O SISTEMAS — Desenvolvimento Web"; 
+}
+
+console.log("Criando soluções sob medida...");
+setInterval(()=>console.log("Carregando módulos..."),1000);
+</div>
+
+<!-- CONTEÚDO PRINCIPAL -->
+<div class="conteudo">
+    <h1>C.O SISTEMAS</h1>
+    <p>Desenvolvimento de sistemas profissionais a partir de R$ 1.200<br>
+       Sites • Painéis Admin • Apps • Integração WhatsApp • PDV • IA</p>
+
+    <a class="whatsapp-btn" href="https://wa.me/5511963266825?text=Olá%2C+quero+criar+um+sistema" target="_blank">
+        💬 Falar no WhatsApp
+    </a>
+</div>
+
+<!-- CHATBOT AUTOMÁTICO -->
+<div class="chatbox">
+    <div class="chat-header">🤖 Chatbot C.O SISTEMAS</div>
+    <div class="chat-mensagens" id="chatBox"></div>
+    <div class="chat-input">
+        <input type="text" id="userMessage" placeholder="Digite aqui...">
+        <button onclick="enviar()">OK</button>
+    </div>
+</div>
+
+<script>
+function botResposta(msg) {
+    msg = msg.toLowerCase();
+
+    if (msg.includes("preço") || msg.includes("valor")) {
+        return "Os projetos começam a partir de R$ 1.200 e variam conforme a complexidade.";
+    }
+    if (msg.includes("site")) {
+        return "Criamos sites profissionais, responsivos e com painel de controle!";
+    }
+    if (msg.includes("sistema")) {
+        return "Desenvolvemos sistemas completos com banco de dados e login.";
+    }
+    if (msg.includes("whatsapp")) {
+        return "Integramos sistemas com WhatsApp e automações!";
+    }
+    return "Não entendi muito bem... pode explicar melhor?";
+}
+
+function enviar() {
+    let campo = document.getElementById("userMessage");
+    let texto = campo.value.trim();
+    if (texto === "") return;
+
+    let chat = document.getElementById("chatBox");
+
+    chat.innerHTML += `<div><b>Você:</b> ${texto}</div>`;
+
+    setTimeout(() => {
+        let resposta = botResposta(texto);
+        chat.innerHTML += `<div><b>Bot:</b> ${resposta}</div>`;
+        chat.scrollTop = chat.scrollHeight;
+    }, 500);
+
+    campo.value = "";
+}
+</script>
+
+</body>
+</html>
